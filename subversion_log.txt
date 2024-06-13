@@ -1,0 +1,312 @@
+URL to view log online:
+https://source.eait.uq.edu.au/viewvc/csse2310-sem1-s4801283/trunk/a1/?view=log
+
+Retrieving logs at Tue Mar 19 15:44:17 AEST 2024
+------------------------------------------------------------------------
+r1 | uqpsutto | 2024-02-21 19:54:56 +1000 (Wed, 21 Feb 2024) | 1 line
+Changed paths:
+   A /play
+   A /prac
+   A /trunk
+   A /trunk/a1
+   A /trunk/a3
+   A /trunk/a4
+
+Initial repository structure
+
+
+------------------------------------------------------------------------
+r4 | s4801283 | 2024-03-02 14:44:39 +1000 (Sat, 02 Mar 2024) | 2 lines
+Changed paths:
+   A /trunk/a1/uqunscramble.c
+
+I wrote a program that checks if the number of command line arguments is even and less than or equal to 6 following the program name, if not output an usage error message and exit with exit status 17
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+------------------------------------------------------------------------
+r5 | s4801283 | 2024-03-02 15:44:07 +1000 (Sat, 02 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+ I modified the program so that it iterates over the command line arguments in pairs and checks that the first element in each pair is one of the permitted arguments i.e, --letters, if so, save the value from the second element in the pair. I also implemented the functionality so that it checks the minimum length argument is between 3 and 6 inclusive.
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   39 ++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 34 insertions(+), 5 deletions(-)
+
+------------------------------------------------------------------------
+r6 | s4801283 | 2024-03-02 17:05:20 +1000 (Sat, 02 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I changed the program so now it checks for duplicates arguments i.e., specifiyng --letters twice and also implemented the get_random_letters() method from the provided library
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
+
+------------------------------------------------------------------------
+r7 | s4801283 | 2024-03-02 18:00:31 +1000 (Sat, 02 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I incorporated letter set checking functionality so now -letters option argument is checked to ensure it does not exceed 11 letters, and has enough letters to cover the minimum set length, and also checks whether all the input letters are valid i.e., found in A-Z.
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+------------------------------------------------------------------------
+r8 | s4801283 | 2024-03-03 12:02:47 +1000 (Sun, 03 Mar 2024) | 4 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+Minor modification to the letter set checking to ensure if the user doesn't specify a set of letters i.e., --letters argument is empty, then it calls the provided library function based on the spec requirements.--This line, and those below, will be ignored--
+
+M    uqunscramble.c
+
+
+Index: uqunscramble.c
+ uqunscramble.c |    7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+------------------------------------------------------------------------
+r9 | s4801283 | 2024-03-03 16:50:12 +1000 (Sun, 03 Mar 2024) | 4 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+Added some functionality that ensures whether the provided dictionary file can be opened and if not it will exit appropriately with the correct exit status 16
+
+M    uqunscramble.c
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+
+------------------------------------------------------------------------
+r10 | s4801283 | 2024-03-04 11:11:30 +1000 (Mon, 04 Mar 2024) | 4 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I revised the current version by modularising the code using different functions to check argument validity ad letter set verification so that my main function does not contain more than 50 lines and I adhere to the style guide
+
+M    uqunscramble.c
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   70 ++++++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 40 insertions(+), 30 deletions(-)
+
+------------------------------------------------------------------------
+r11 | s4801283 | 2024-03-04 17:48:42 +1000 (Mon, 04 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I ran the csse2310stylecheck.sh tool and made the appropriate changes so my complies with styling requirements
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   80 ++++++++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 48 insertions(+), 32 deletions(-)
+
+------------------------------------------------------------------------
+r12 | s4801283 | 2024-03-05 21:42:08 +1000 (Tue, 05 Mar 2024) | 4 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I incorporated the functionality so that the program reads from the given dictionary file and prints its contents line by line onto the terminal. Now I need to figure out how to store these words in an array
+
+M    uqunscramble.c
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   63 +++++++++++++++++++++++++++++++++++++++++++++++----------
+ 1 file changed, 53 insertions(+), 10 deletions(-)
+
+------------------------------------------------------------------------
+r13 | s4801283 | 2024-03-05 22:07:30 +1000 (Tue, 05 Mar 2024) | 4 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I made the program take the lines read from the dictionary file and put it into an array of strings. I haven't yet figured out how to only store words that can be formed from a set of letters but the next task is to figure out the user input functionality.
+
+M    uqunscramble.c
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+------------------------------------------------------------------------
+r14 | s4801283 | 2024-03-07 15:13:15 +1000 (Thu, 07 Mar 2024) | 4 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I separated the code that adds each word from the dictionary into an array from the main so the main function does not exceed 50 lines
+
+M    uqunscramble.c
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   38 +++++++++++++++++++++-----------------
+ 1 file changed, 21 insertions(+), 17 deletions(-)
+
+------------------------------------------------------------------------
+r15 | s4801283 | 2024-03-07 18:35:59 +1000 (Thu, 07 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I modified the program so now it constantly queries the user for input until EOF and have done up to "word can't be formed from available letters" in the spec. The verification code has been put into its own function to prevent the mainline from exceeding the limit but I still need to condense it.
+
+
+Index: uqunscramble.c
+ uqunscramble.c |  116 +++++++++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 85 insertions(+), 31 deletions(-)
+
+------------------------------------------------------------------------
+r16 | s4801283 | 2024-03-08 18:34:12 +1000 (Fri, 08 Mar 2024) | 4 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I ran some tests and found that for some reason, some of tests are failing even though my code produces the correct output. testa1.sh might be bugged or maybe I am misinterpreting the explanation for the test.
+
+M    uqunscramble.c
+
+
+Index: uqunscramble.c
+ uqunscramble.c |  132 ++++++++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 79 insertions(+), 53 deletions(-)
+
+------------------------------------------------------------------------
+r17 | s4801283 | 2024-03-08 18:53:11 +1000 (Fri, 08 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I realised I misread the spec and adjusted my statements printed to standard error accordingly so I can pass the tests for areas that I have completed
+
+
+Index: uqunscramble.c
+ uqunscramble.c |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+------------------------------------------------------------------------
+r18 | s4801283 | 2024-03-10 14:34:34 +1000 (Sun, 10 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I continued running tests and fixing the program and am now up to implementing the scoring system. I noticed in later tests where I am not up to I am receiving a segmentation fault so I suspect there could be some error with my code.
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   51 +++++++++++++++++++++++++++++++++------------------
+ 1 file changed, 33 insertions(+), 18 deletions(-)
+
+------------------------------------------------------------------------
+r19 | s4801283 | 2024-03-10 15:35:28 +1000 (Sun, 10 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I ironed out the current segmentation fault issues with the help of gdb tool and the test 5.4 which was not passing before has now passed. Now my program is ready to implement the scoring system
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
+
+------------------------------------------------------------------------
+r20 | s4801283 | 2024-03-12 15:21:54 +1000 (Tue, 12 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I did some more testing with the provided test file and now am up to the advanced functionality section
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   94 +++++++++++++++++++++++++++++++++++----------------------
+ 1 file changed, 59 insertions(+), 35 deletions(-)
+
+------------------------------------------------------------------------
+r21 | s4801283 | 2024-03-13 13:25:32 +1000 (Wed, 13 Mar 2024) | 2 lines
+Changed paths:
+   A /trunk/a1/makefile
+   M /trunk/a1/uqunscramble.c
+
+I am finally adding and committing my makefile to my svn repository
+
+
+Index: makefile
+ makefile |    9 +++++++++
+ 1 file changed, 9 insertions(+)
+Index: uqunscramble.c
+ uqunscramble.c |   38 ++++++++++++++++++++++++--------------
+ 1 file changed, 24 insertions(+), 14 deletions(-)
+
+------------------------------------------------------------------------
+r22 | s4801283 | 2024-03-13 21:09:39 +1000 (Wed, 13 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I have finally completed the core functionality of the assignment as it passes all the provided tests. Now I must conduct my own error checking and ensure that it meets the spec requirements but also begin creating my documentation and docstrings.
+
+
+Index: uqunscramble.c
+ uqunscramble.c |  108 +++++++++++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 82 insertions(+), 26 deletions(-)
+
+------------------------------------------------------------------------
+r23 | s4801283 | 2024-03-13 21:18:46 +1000 (Wed, 13 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+ I ran the style check tool and realised I had a few magic numbers, missing 'const' and my main line was exceeding the 50 line threshold. However these have all been fixed and I will be uploading this current draft to gradescope
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
+
+------------------------------------------------------------------------
+r24 | s4801283 | 2024-03-16 12:35:31 +1000 (Sat, 16 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+ I ran valgrind and resolved any apparent memory issues and also ran the style check so my main function and verify input function conforms to the function length limit
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   44 ++++++++++++++++++++++++++++++++------------
+ 1 file changed, 32 insertions(+), 12 deletions(-)
+
+------------------------------------------------------------------------
+r25 | s4801283 | 2024-03-16 14:25:39 +1000 (Sat, 16 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+ I realised I am supposed to have the message "All heap blocks were freed - no leaks are possible" when running Valgrind so I just ensured that all exit paths of the program are preceded by freeing the memory beforehand so I don't have memory "still reachable".
+
+
+Index: uqunscramble.c
+ uqunscramble.c |   11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+------------------------------------------------------------------------
+r26 | s4801283 | 2024-03-19 15:41:36 +1000 (Tue, 19 Mar 2024) | 2 lines
+Changed paths:
+   M /trunk/a1/uqunscramble.c
+
+I finally decided to incorporate some comments so when I come back to the code I actually have an idea of what I was thinking at the time. Now the code is officially ready for submission. I do wonder if the code will continue to work because it relies on the 2310 provided method which I might lose access to later. However, for the time being, it's working and ready.
+
+
+Index: uqunscramble.c
+ uqunscramble.c |  116 +++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 112 insertions(+), 4 deletions(-)
+
+------------------------------------------------------------------------
